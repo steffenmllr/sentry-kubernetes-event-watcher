@@ -1,4 +1,4 @@
-name: Push to Github REgistry
+name: Push to Github Registry
 on:
   push:
     branches: [ master ]
