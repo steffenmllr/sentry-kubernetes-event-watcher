@@ -1,0 +1,17 @@
+name: Push to Github REgistry
+on:
+  push:
+    branches: [ master ]
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Build container
+        run: |
+          export BUILD_TAG="${GITHUB_SHA:0:7}"
+          docker build -t "docker.pkg.github.com/steffenmllr/sentry-kubernetes-event-watcher/watcher:${BUILD_TAG}" .
+          push "docker.pkg.github.com/steffenmllr/sentry-kubernetes-event-watcher/watcher:${BUILD_TAG}"

@@ -14,6 +14,6 @@ RUN mkdir /sentry-k8s
 WORKDIR /sentry-k8s
 
 COPY --from=buildImage /sentry-kubernetes-event-watcher/watcher /sentry-k8s/watcher
-RUN chmod +x /watcher
+RUN chmod +x /sentry-k8s/watcher
 
 CMD ["/sentry-k8s/watcher"]
